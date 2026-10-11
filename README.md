@@ -43,7 +43,8 @@
 { "status": "error", "code": 404, "message": "Item not found: id=99" }
 ```
 
-모든 응답은 `ApiResponse`에서, 에러는 `GlobalExceptionHandler`에서 같은 형식으로 변환.
+모든 응답은 `ApiResponse` 형식으로 반환하고, 에러는 `GlobalExceptionHandler`에서 같은 형식으로 변환.
+(503은 ServiceStatusInterceptor에서 직접 응답)
 
 ## 5. 실행 및 테스트 화면
 
