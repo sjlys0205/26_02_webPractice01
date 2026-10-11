@@ -27,8 +27,8 @@ public class ItemController {
 
     // ===================== POST =====================
 
-    // POST 1) 단건 생성 → 201 Created (+ Location 헤더)
-    //   400: 검증 실패, 409: 같은 이름의 아이템이 이미 존재
+    // POST 1) 단건 생성 → 201 Created
+    //   400: 검증 실패, 409: 아이템 이름 중복
     @PostMapping
     public ResponseEntity<ApiResponse<ItemDto>> createItem(@Valid @RequestBody ItemCreateRequest request) {
         ItemDto item;
@@ -41,7 +41,7 @@ public class ItemController {
     }
 
     // POST 2) 여러 개 한 번에 생성 → 201 Created
-    //   400: 검증 실패, 409: 이름 중복 (하나라도 중복이면 전체 실패)
+    //   400: 검증 실패, 409: 아이템 이름 중복 (하나라도 중복이면 전체 실패)
     @PostMapping("/bulk")
     public ResponseEntity<ApiResponse<List<ItemDto>>> createItems(@Valid @RequestBody ItemBulkCreateRequest request) {
         List<ItemDto> created = new ArrayList<>();
@@ -62,9 +62,7 @@ public class ItemController {
                 .body(ApiResponse.created(created, created.size() + " items created"));
     }
 
-    // ===================== GET =====================
-
-    // GET 1) 목록 조회 (검색 + 페이지네이션) → 200 OK
+    // GET 1) 전체 조회 (검색 + 페이지네이션) → 200 OK
     //   /api/v1/items?keyword=abc&page=0&size=10  (page는 0부터 시작)
     //   400: page < 0 또는 size가 1~100 범위를 벗어남
     @GetMapping
@@ -104,8 +102,6 @@ public class ItemController {
         return ResponseEntity.ok(ApiResponse.success(findItem(id)));
     }
 
-    // ===================== PUT =====================
-
     // PUT 1) 전체 수정 (name, price 모두 필수) → 200 OK
     //   400: 검증 실패, 404: 아이템 없음, 409: 다른 아이템과 이름 중복
     @PutMapping("/{id}")
@@ -135,8 +131,6 @@ public class ItemController {
         return ResponseEntity.ok(ApiResponse.success(item, "Item price updated"));
     }
 
-    // ===================== DELETE =====================
-
     // DELETE 1) 단건 삭제 → 200 OK (삭제된 아이템 반환)
     //   404: 아이템 없음
     @DeleteMapping("/{id}")
@@ -159,8 +153,6 @@ public class ItemController {
         return ResponseEntity.ok(ApiResponse.success(Map.of("deletedCount", count), "All items deleted"));
     }
 
-    // ===================== helper =====================
-
     private ItemDto findItem(Long id) {
         ItemDto item = store.get(id);
         if (item == null) {
@@ -169,7 +161,7 @@ public class ItemController {
         return item;
     }
 
-    // excludeId: 수정 시 자기 자신은 중복 검사에서 제외
+    // excludeId: 수정 시 자기 자신은 중복 확인되지 않도록 예외처리
     private void checkDuplicateName(String name, Long excludeId) {
         boolean exists = store.values().stream()
                 .anyMatch(item -> item.getName().equals(name) && !item.getId().equals(excludeId));

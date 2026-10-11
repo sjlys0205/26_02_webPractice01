@@ -12,9 +12,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.io.IOException;
 
-// 서비스 상태 확인 미들웨어
+// 서비스 상태 확인 목적 미들웨어
 // 1) 점검 모드(app.maintenance-mode=true)이면 모든 API 요청을 503으로 차단
-// 2) 테스트용 헤더 X-Simulate-Error: 500 또는 503 으로 서버 에러 응답을 재현
+// 2) 테스트용 헤더 X-Simulate-Error: 500 또는 503 으로 서버 에러 응답 확인
 @Component
 public class ServiceStatusInterceptor implements HandlerInterceptor {
 

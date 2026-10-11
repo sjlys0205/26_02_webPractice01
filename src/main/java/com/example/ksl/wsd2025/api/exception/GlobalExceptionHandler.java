@@ -19,7 +19,7 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // 404, 409 등 컨트롤러에서 직접 던진 예외
+    // 404, 409 등 컨트롤러에서 의도한 예외
     @ExceptionHandler(ApiException.class)
     public ResponseEntity<ApiResponse<Void>> handleApiException(ApiException e) {
         return build(e.getStatus(), e.getMessage(), null);
