@@ -8,7 +8,7 @@
 |---|---|---|
 | POST | `/api/v1/items` | 아이템 생성 |
 | POST | `/api/v1/items/bulk` | 아이템 여러 개 생성 |
-| GET | `/api/v1/items?keyword=&page=&size=` | 목록 조회 (검색, 페이징) |
+| GET | `/api/v1/items?keyword=&page=&size=` | 목록 조회 |
 | GET | `/api/v1/items/{id}` | 단건 조회 |
 | PUT | `/api/v1/items/{id}` | 아이템 전체 수정 |
 | PUT | `/api/v1/items/{id}/price` | 가격만 수정 |
