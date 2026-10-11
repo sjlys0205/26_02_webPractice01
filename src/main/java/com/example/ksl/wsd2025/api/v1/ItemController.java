@@ -37,7 +37,7 @@ public class ItemController {
             item = saveNewItem(request);
         }
         return ResponseEntity.created(URI.create("/api/v1/items/" + item.getId()))
-                .body(ApiResponse.success(item, "Item created"));
+                .body(ApiResponse.created(item, "Item created"));
     }
 
     // POST 2) 여러 개 한 번에 생성 → 201 Created
@@ -59,7 +59,7 @@ public class ItemController {
             }
         }
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponse.success(created, created.size() + " items created"));
+                .body(ApiResponse.created(created, created.size() + " items created"));
     }
 
     // ===================== GET =====================

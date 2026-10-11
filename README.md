@@ -39,7 +39,7 @@ Spring Boot로 구현한 아이템(name, price) 관리 REST API입니다. (Java 
 ## 4. 표준 응답 형식
 
 ```json
-{ "status": "success", "data": { "id": 1, "name": "apple", "price": 1000 } }
+{ "status": "success", "code": 201, "message": "Item created", "data": { "id": 1, "name": "apple", "price": 1000 } }
 ```
 ```json
 { "status": "error", "code": 404, "message": "Item not found: id=99" }
