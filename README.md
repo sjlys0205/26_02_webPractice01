@@ -48,3 +48,50 @@
 ## 5. 실행 및 테스트 화면
 
 스크린샷은 `docs/screenshots/` 폴더에 정리함.(LMS 과제제출란에도 첨부파일로 첨부)
+
+### 서버 실행
+![서버 실행](docs/screenshots/01.running.jpg)
+
+### POST
+| 아이템 생성 → 201 | 입력값 검증 실패 → 400 |
+|---|---|
+| ![POST 201](docs/screenshots/02.post_201.jpg) | ![POST 400](docs/screenshots/03.post_400.jpg) |
+
+| 아이템 여러 개 생성 → 201 |
+|---|
+| ![POST bulk 201](docs/screenshots/04.bulkPost-201.jpg) |
+
+### GET
+| 목록 조회 → 200 | 단건 조회 → 200 |
+|---|---|
+| ![GET 200](docs/screenshots/05.get_200.jpg) | ![GET single 200](docs/screenshots/06.get_single_200.jpg) |
+
+| 존재하지 않는 아이템 조회 → 404 |
+|---|
+| ![GET 404](docs/screenshots/07.get_404.jpg) |
+
+### PUT
+| 가격만 수정 → 200 | 전체 수정 → 200 |
+|---|---|
+| ![PUT price 200](docs/screenshots/08.put_price_200.jpg) | ![PUT 200](docs/screenshots/09.put_all_200.jpg) |
+
+| 존재하지 않는 아이템 수정 → 404 |
+|---|
+| ![PUT 404](docs/screenshots/10.put_404.jpg) |
+
+### DELETE
+| 단건 삭제 → 200 | 존재하지 않는 아이템 삭제 → 404 |
+|---|---|
+| ![DELETE 200](docs/screenshots/11.delete_200.jpg) | ![DELETE 404](docs/screenshots/12.delete_404.jpg) |
+
+| 전체 삭제 → 200 |
+|---|
+| ![DELETE all 200](docs/screenshots/13.delete_all_200.jpg) |
+
+### 5xx 응답
+| 점검 모드 → 503 | 서버 내부 오류 → 500 |
+|---|---|
+| ![503](docs/screenshots/14.503_get.jpg) | ![500](docs/screenshots/15.500_get.jpg) |
+
+### 미들웨어 로그 (LoggingInterceptor)
+![로그](docs/screenshots/16.log.jpg)
