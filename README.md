@@ -47,7 +47,7 @@
 
 ## 5. 실행 및 테스트 화면
 
-스크린샷은 `docs/screenshots/` 폴더에 정리함.(LMS 과제제출란에도 첨부파일로 첨부)
+스크린샷은 `docs/screenshots/` 폴더에 정리하고 README에서 바로 확인할 수 있도록 링크함.(LMS 과제제출란에도 첨부파일로 첨부)
 
 ### 서버 실행
 ![서버 실행](docs/screenshots/01.running.jpg)
