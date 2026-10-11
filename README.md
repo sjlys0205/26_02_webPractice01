@@ -1,6 +1,4 @@
-# WSD-2025 Item REST API
-
-Spring Boot로 구현한 아이템(name, price) 관리 REST API입니다. (Java 21, Spring Boot 3.5.7, 메모리 저장소)
+# 실습1) CRUD 백엔드 만들기
 
 실행: `./gradlew bootRun` → `http://localhost:8080`
 
@@ -34,7 +32,7 @@ Spring Boot로 구현한 아이템(name, price) 관리 REST API입니다. (Java 
 | 5xx | 500 Internal Server Error | 서버 내부 오류 |
 | 5xx | 503 Service Unavailable | 점검 모드 |
 
-※ 5xx 테스트: 요청 헤더에 `X-Simulate-Error: 500` 또는 `X-Simulate-Error: 503` 추가
+※ 5xx 테스트: 요청 헤더에 `X-Simulate-Error: 500` 또는 `X-Simulate-Error: 503` 추가하여 임의로 확인 가능하도록 구성.
 
 ## 4. 표준 응답 형식
 
@@ -45,8 +43,8 @@ Spring Boot로 구현한 아이템(name, price) 관리 REST API입니다. (Java 
 { "status": "error", "code": 404, "message": "Item not found: id=99" }
 ```
 
-모든 응답은 `ApiResponse`로 감싸고, 에러는 `GlobalExceptionHandler`에서 같은 형식으로 변환합니다.
+모든 응답은 `ApiResponse`에서, 에러는 `GlobalExceptionHandler`에서 같은 형식으로 변환.
 
 ## 5. 실행 및 테스트 화면
 
-스크린샷은 `docs/screenshots/` 폴더에 있습니다.
+스크린샷은 `docs/screenshots/` 폴더에 정리함.(LMS 과제제출란에도 첨부파일로 첨부)
